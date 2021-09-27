@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { JsonapiService } from '../sevices/jsonapi.service';
+import { JsonapiService } from '../services/jsonapi.service';
 
 @Component({
   selector: 'app-chat',

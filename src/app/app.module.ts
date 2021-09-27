@@ -8,6 +8,9 @@ import { ChatComponent } from './chat/chat.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AdminGuard } from './guards/admin.guard';
 
 @NgModule({
   declarations: [
@@ -15,14 +18,18 @@ import { HttpClientModule } from '@angular/common/http';
     AdminComponent,
     ChatComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    NgbModule,
   ],
-  providers: [],
+  providers: [
+    AdminGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
