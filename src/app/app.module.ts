@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdminGuard } from './guards/admin.guard';
+import { ChatBoxComponent } from './components/chat-box/chat-box.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { AdminGuard } from './guards/admin.guard';
     HomeComponent,
     NotFoundComponent,
     NavbarComponent,
+    ChatBoxComponent,
   ],
   imports: [
     BrowserModule,
