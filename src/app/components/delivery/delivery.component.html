@@ -1,0 +1,25 @@
+<div>
+  <section>
+    <!--ADD NEW DELIVERY-->
+    <div class="container my-3">
+      <button class="btn btn-primary" (click)="onClickAddNewDelivery()">
+        Add a new delivery
+      </button>
+    </div>
+  </section>
+  <section>
+    <!--SHOW PROGRESS-->
+    <div *ngFor="let delivery of deliveriesArray">
+      <div class="container my-2">
+        <ngb-progressbar
+          type="warning"
+          hight="2rem"
+          [value]="valueOf(delivery.status)"
+          [striped]="true"
+          [animated]="true"
+          ><i> {{ delivery.status }} </i></ngb-progressbar
+        >
+      </div>
+    </div>
+  </section>
+</div>
