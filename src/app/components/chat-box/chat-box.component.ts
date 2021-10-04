@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ChatService } from 'src/app/services/chat.service';
 
 @Component({
   selector: 'app-chat-box',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./chat-box.component.css']
 })
 export class ChatBoxComponent implements OnInit {
+  chatsArray: any[] = [];
 
-  constructor() { }
+  constructor(private chatService: ChatService) { }
 
   ngOnInit(): void {
+    this.chatService.chats.subscribe((chats) => {
+      this.chatsArray = chats;
+    });
   }
 
+  onClickAddNewChat() {
+    this.chatService.addNewChat();
+  }
 }

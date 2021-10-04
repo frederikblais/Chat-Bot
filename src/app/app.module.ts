@@ -12,6 +12,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdminGuard } from './guards/admin.guard';
 import { ChatBoxComponent } from './components/chat-box/chat-box.component';
+import { DeliveryComponent } from './components/delivery/delivery.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ChatBoxComponent } from './components/chat-box/chat-box.component';
     NotFoundComponent,
     NavbarComponent,
     ChatBoxComponent,
+    DeliveryComponent,
   ],
   imports: [
     BrowserModule,
