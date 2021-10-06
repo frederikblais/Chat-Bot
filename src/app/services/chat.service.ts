@@ -20,35 +20,23 @@ export class ChatService {
   
   constructor() { }
 
-  addNewChat() {
-    const newChat = this.generateNewChat();
+  addNewChat(input:string) {
+    const newChat = this.generateNewChat(input);
     // const botChat = this.generateAIChat();
 
     this.chats.pipe(take(1)).subscribe((allChats) => {
       allChats.push(newChat);
       this.chats.next(allChats);
-      // allChats.push(botChat);
-      // this.chats.next(allChats);
     });
   }
 
-  generateNewChat() {
+  generateNewChat(input:string) {
     const currentTime = new Date().getTime();
     const chat: iChat = {
       sender: 'User',
-      text: 'Hello!',
+      text: input, // <- Add reference to this.userTextInput
       sentOn: new Date(currentTime),
     };
     return chat;
   }
-
-  // generateAIChat() {
-  //   const currentTime = new Date().getTime();
-  //   const botChat: iChat = {
-  //     sender: 'Bot',
-  //     text: 'Nice!',
-  //     sentOn: new Date(currentTime),
-  //   };
-  //   return botChat;
-  // }
 }

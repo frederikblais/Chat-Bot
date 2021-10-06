@@ -17,7 +17,7 @@
 
   <div class="d-flex bd-highlight" id="chatbox">
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="Type here..." />
+      <input type="text" [(ngModel)]="userTextInput" class="form-control" placeholder="Type here..." />
       <button class="btn text-light bg-primary" (click)="onClickAddNewChat()">
         <svg
           xmlns="http://www.w3.org/2000/svg"

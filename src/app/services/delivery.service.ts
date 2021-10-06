@@ -18,7 +18,6 @@ export interface iDelivery {
   providedIn: 'root',
 })
 export class DeliveryService {
-
   deliveries: BehaviorSubject<iDelivery[]> = new BehaviorSubject(
     [] as iDelivery[]
   );
@@ -32,7 +31,7 @@ export class DeliveryService {
       this.deliveries.next(allDeliveries);
     });
   }
-  
+
   generateNewDelivery() {
     const currentTime = new Date().getTime();
     const deliveryTime = (60 + Math.floor(Math.random() * 3600 * 2)) * 1000;
