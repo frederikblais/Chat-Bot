@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { DeliveryService, deliveryStatus } from 'src/app/services/delivery.service';
+import {
+  DeliveryService,
+  deliveryStatus,
+} from 'src/app/services/delivery.service';
+import { WebsocketService } from 'src/app/services/websocket.service';
 
 @Component({
   selector: 'app-delivery',
@@ -8,25 +12,33 @@ import { DeliveryService, deliveryStatus } from 'src/app/services/delivery.servi
 })
 export class DeliveryComponent implements OnInit {
   deliveriesArray: any[] = [];
+  myTextInput: string = '';
 
-  constructor(private deliveryService: DeliveryService) {}
+  constructor(
+    private deliveryService: DeliveryService,
+    private websocketService: WebsocketService
+    ) {}
 
   ngOnInit(): void {
     this.deliveryService.deliveries.subscribe((deliveries) => {
       this.deliveriesArray = deliveries;
-    });
+    })
+
+    this.websocketService.openWebSocket();
   }
 
   onClickAddNewDelivery() {
+    console.log(this.myTextInput);
+    this.websocketService.sendMessage(this.myTextInput);
     this.deliveryService.addNewDelivery();
   }
 
   valueOf(status: deliveryStatus) {
-    if(status === deliveryStatus.placed){
+    if (status === deliveryStatus.placed) {
       return 33;
-    } else if (status === deliveryStatus.transit){
+    } else if (status === deliveryStatus.transit) {
       return 66;
     }
-    return 100
+    return 100;
   }
 }

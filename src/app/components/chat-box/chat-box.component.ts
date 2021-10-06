@@ -8,6 +8,7 @@ import { ChatService } from 'src/app/services/chat.service';
 })
 export class ChatBoxComponent implements OnInit {
   chatsArray: any[] = [];
+  userTextInput: string = '';
 
   constructor(private chatService: ChatService) { }
 
@@ -18,6 +19,8 @@ export class ChatBoxComponent implements OnInit {
   }
 
   onClickAddNewChat() {
-    this.chatService.addNewChat();
+    //console.log(this.userTextInput)
+    this.chatService.addNewChat(this.userTextInput);
+
   }
 }
