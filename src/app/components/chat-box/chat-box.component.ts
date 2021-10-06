@@ -19,8 +19,8 @@ export class ChatBoxComponent implements OnInit {
   }
 
   onClickAddNewChat() {
-    //console.log(this.userTextInput)
     this.chatService.addNewChat(this.userTextInput);
-
+    // this.chatService.addNewResponse();
+    this.userTextInput = "";
   }
 }
