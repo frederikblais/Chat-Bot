@@ -9,20 +9,15 @@ export interface iChat {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class ChatService {
+  chats: BehaviorSubject<iChat[]> = new BehaviorSubject([] as iChat[]);
 
-  chats: BehaviorSubject<iChat[]> = new BehaviorSubject(
-    [] as iChat[]
-  );
-  
-  constructor() { }
+  constructor() {}
 
-  addNewChat(input:string) {
+  addNewChat(input: string) {
     const newChat = this.generateNewChat(input);
-    // const botChat = this.generateAIChat();
 
     this.chats.pipe(take(1)).subscribe((allChats) => {
       allChats.push(newChat);
@@ -30,13 +25,36 @@ export class ChatService {
     });
   }
 
-  generateNewChat(input:string) {
+  // addNewResponse() {
+  //   const newResponse = this.generateBotResponse();
+
+  //   this.chats.pipe(take(1)).subscribe((allChats) => {
+  //     allChats.push(newResponse);
+  //     this.chats.next(allChats);
+  //   });
+  // }
+
+  generateNewChat(input: string) {
     const currentTime = new Date().getTime();
     const chat: iChat = {
       sender: 'User',
-      text: input, // <- Add reference to this.userTextInput
+      text: input,
       sentOn: new Date(currentTime),
     };
     return chat;
   }
+
+  // generateBotResponse() {
+  //   const currentTime = new Date().getTime();
+
+  //   var responses = ['I see.', 'How are you doing?', 'Thats nice!', 'eggplant'];
+  //   let response = responses[Math.floor(Math.random() * responses.length)];
+
+  //   const botChat: iChat = {
+  //     sender: 'User',
+  //     text: response,
+  //     sentOn: new Date(currentTime),
+  //   };
+  //   return botChat;
+  // }
 }

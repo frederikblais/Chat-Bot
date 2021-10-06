@@ -9,16 +9,26 @@
         <!--bubble-->
         <ul>
           <li class="user">{{ chat.text }}</li>
-          <li class="bot"></li>
+          <!-- <li class="bot">{{ botChat.text }}</li> -->
         </ul>
       </div>
     </div>
   </section>
 
-  <div class="d-flex bd-highlight" id="chatbox">
-    <div class="input-group">
-      <input type="text" [(ngModel)]="userTextInput" class="form-control" placeholder="Type here..." />
-      <button class="btn text-light bg-primary" (click)="onClickAddNewChat()">
+  <div class="container my-3" id="chatbox">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        [(ngModel)]="userTextInput"
+        (keydown.enter)="onClickAddNewChat()"
+        class="form-control"
+        placeholder="Type here..."
+      />
+      <button
+        type="submit"
+        class="btn text-light bg-primary"
+        (click)="onClickAddNewChat()"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
