@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container my-3">
   <section>
     <ul>
       <li class="bot">Hi!</li>
@@ -6,10 +6,17 @@
     <!--SHOW Chat-->
     <div *ngFor="let chat of chatsArray">
       <div class="container my-2">
-        <!--bubble-->
+        <!-- User bubble -->
         <ul>
           <li class="user">{{ chat.text }}</li>
-          <!-- <li class="bot">{{ botChat.text }}</li> -->
+        </ul>
+      </div>
+    </div>
+    <div *ngFor="let botChat of botChatsArray">
+      <div class="container my-2">
+        <!-- Bot bubble -->
+        <ul>
+          <li class="bot">{{ botChat.text }}</li>
         </ul>
       </div>
     </div>
