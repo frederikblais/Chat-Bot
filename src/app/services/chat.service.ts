@@ -25,14 +25,16 @@ export class ChatService {
     });
   }
 
-  // addNewResponse() {
-  //   const newResponse = this.generateBotResponse();
+  addNewResponse() {
+    const newResponse = this.generateBotResponse();
 
-  //   this.chats.pipe(take(1)).subscribe((allChats) => {
-  //     allChats.push(newResponse);
-  //     this.chats.next(allChats);
-  //   });
-  // }
+    this.chats.pipe(take(1)).subscribe((allChats) => {
+      setTimeout(() => {
+        allChats.push(newResponse);
+      }, 1200);
+      this.chats.next(allChats);
+    });
+  }
 
   generateNewChat(input: string) {
     const currentTime = new Date().getTime();
@@ -44,17 +46,32 @@ export class ChatService {
     return chat;
   }
 
-  // generateBotResponse() {
-  //   const currentTime = new Date().getTime();
+  generateBotResponse() {
+    const currentTime = new Date().getTime();
 
-  //   var responses = ['I see.', 'How are you doing?', 'Thats nice!', 'eggplant'];
-  //   let response = responses[Math.floor(Math.random() * responses.length)];
+    var responses = [
+      'I see.',
+      'How are you doing?',
+      'Thats nice!',
+      '🥺👉👈',
+      '🍆',
+      'Wyd tonight?',
+      'You are so cool, no way!',
+      'Im sure you gonna have a good grade!',
+      'Ok.',
+      'Whats your snap? 👻',
+      'Mind if I come over?',
+      'Whats 9+10?',
+      'Why did the chicken crossed the road?',
+      'So is Fred getting a good grade? 😉'
+    ];
+    let response = responses[Math.floor(Math.random() * responses.length)];
 
-  //   const botChat: iChat = {
-  //     sender: 'User',
-  //     text: response,
-  //     sentOn: new Date(currentTime),
-  //   };
-  //   return botChat;
-  // }
+    const botChat: iChat = {
+      sender: 'Bot',
+      text: response,
+      sentOn: new Date(currentTime),
+    };
+    return botChat;
+  }
 }
