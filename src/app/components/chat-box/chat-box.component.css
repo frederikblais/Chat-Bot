@@ -42,3 +42,8 @@ ul li {
 .user:last-of-type {
   border-bottom-right-radius: 30px;
 }
+
+.canvas {
+  height: 585px;
+  overflow-y: auto;
+}
